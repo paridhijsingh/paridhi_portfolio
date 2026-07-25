@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #0284c7;
 }
 
 @theme inline {
@@ -10,17 +11,81 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-gradient: gradient 18s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html {
+  color-scheme: light;
+}
+
+@keyframes splashBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.page-turn-surface {
+  transform-origin: top center;
+  transform: perspective(1600px) rotateX(0deg);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.4, 0.05, 0.2, 1);
+  backface-visibility: hidden;
+}
+
+.page-turn-surface.page-turning {
+  transform: perspective(1600px) rotateX(-92deg);
+  opacity: 0;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-turn-surface,
+  .page-turn-surface.page-turning {
+    transition: opacity 120ms ease;
+    transform: none;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 25%, transparent);
+  color: #0f172a;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #10b981;
+  animation: typewriterBlink 1s step-end infinite;
+}
+
+@keyframes typewriterBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
