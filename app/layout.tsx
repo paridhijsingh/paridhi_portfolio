@@ -16,7 +16,7 @@ const siteDescription =
   "AI & Data Science portfolio focused on Machine Learning system design, RAG architectures, and multi-agent orchestration.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://workwithparidhi.com"),
+  metadataBase: new URL("https://workwithparidhi.vercel.app"),
   title: "Paridhi Jay Singh | AI & Data Science",
   description: siteDescription,
   openGraph: {
