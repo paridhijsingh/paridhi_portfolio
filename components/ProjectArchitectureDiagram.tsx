@@ -36,7 +36,7 @@ function Node({
         x={x}
         y={y + 4}
         textAnchor="middle"
-        className="fill-[#A1A1AA] font-mono text-[9px]"
+        className="fill-[#A1A1AA] font-mono text-[10px]"
       >
         {label}
       </text>
@@ -142,7 +142,7 @@ export function ProjectArchitectureDiagram({
     >
       <svg
         viewBox="0 0 240 80"
-        className={`w-full ${compact ? "h-14" : "h-16"}`}
+        className={`w-full ${compact ? "h-16 sm:h-14" : "h-20 sm:h-16"}`}
         role="img"
         aria-label={`Architecture diagram for ${highlight}`}
       >

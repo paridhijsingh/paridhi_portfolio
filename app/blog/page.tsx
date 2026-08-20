@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { WritingNotebook } from "@/components/WritingNotebook";
+import { SubpageNav } from "@/components/SubpageNav";
 
 export const metadata: Metadata = {
   title: "What I'm learning | Paridhi Jay Singh",
@@ -12,16 +11,9 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   return (
     <div className="lab-grid min-h-full bg-[#08090D]">
-      <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
-        <Link
-          href="/#writing"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#A1A1AA] transition-colors hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to portfolio
-        </Link>
-
-        <header className="mt-8">
+      <SubpageNav label="Writing" backHref="/#writing" />
+      <main id="main-content" className="mx-auto max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
+        <header>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#22D3EE]">
             Writing
           </p>
@@ -35,7 +27,7 @@ export default function BlogIndexPage() {
           <div aria-hidden="true" className="mt-5 h-px w-16 bg-[#8B5CF6]" />
         </header>
         <WritingNotebook />
-      </div>
+      </main>
     </div>
   );
 }

@@ -60,6 +60,9 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-[#08090D] font-sans text-[#F5F5F5]">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         {children}
         <PortfolioAssistant />
       </body>

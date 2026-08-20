@@ -107,7 +107,7 @@ export function IntroCover({ onComplete }: IntroCoverProps) {
                 type="button"
                 onClick={() => beginTurn("#work")}
                 disabled={turning}
-                className="group inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/10 px-6 py-3 text-sm font-medium text-[#F5F5F5] transition-all hover:border-[#8B5CF6]/55 hover:bg-[#8B5CF6]/18 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] disabled:cursor-wait disabled:opacity-80 motion-reduce:hover:translate-y-0 hover:-translate-y-0.5"
+                className="btn-primary min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] disabled:cursor-wait disabled:opacity-80 motion-reduce:hover:translate-y-0 group"
               >
                 Explore my work
                 <ArrowRight
@@ -119,7 +119,7 @@ export function IntroCover({ onComplete }: IntroCoverProps) {
                 href={SITE.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-[rgba(255,255,255,0.04)] px-6 py-3 text-sm font-medium text-[#A1A1AA] transition-all hover:border-white/[0.14] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] motion-reduce:hover:translate-y-0 hover:-translate-y-0.5"
+                className="btn-secondary min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] motion-reduce:hover:translate-y-0"
               >
                 View resume
               </a>
@@ -131,7 +131,7 @@ export function IntroCover({ onComplete }: IntroCoverProps) {
           type="button"
           onClick={() => beginTurn()}
           disabled={turning}
-          className={`group relative z-10 pb-8 text-center font-mono text-xs uppercase tracking-[0.22em] text-[#A1A1AA]/70 transition-all duration-700 motion-reduce:transition-none hover:text-[#22D3EE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] disabled:cursor-wait ${
+          className={`group relative z-10 min-h-12 w-full pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-2 text-center font-mono text-xs uppercase tracking-[0.22em] text-[#A1A1AA]/70 transition-all duration-700 motion-reduce:transition-none hover:text-[#22D3EE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] disabled:cursor-wait ${
             ready ? "translate-y-0 opacity-100 delay-700" : "translate-y-3 opacity-0"
           }`}
         >

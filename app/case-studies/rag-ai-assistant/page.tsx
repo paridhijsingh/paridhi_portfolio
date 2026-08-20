@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, Bot, Database, Search } from "lucide-react";
+import { ArrowRight, Bot, Database, Search } from "lucide-react";
+import { SubpageNav } from "@/components/SubpageNav";
 
 type Stage = {
   id: string;
@@ -113,17 +113,14 @@ export default function RagAssistantCaseStudyPage() {
   );
 
   return (
-    <div className="lab-grid min-h-full bg-[#08090D] px-6 py-14 sm:px-8 sm:py-20">
-      <div className="mx-auto max-w-6xl">
-        <Link
-          href="/#work"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#A1A1AA] transition-colors hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to work
-        </Link>
-
-        <section className="mt-10 rounded-2xl border border-white/[0.08] bg-[rgba(255,255,255,0.04)] p-6 sm:p-10">
+    <div className="lab-grid min-h-full bg-[#08090D]">
+      <SubpageNav
+        label="RAG Case Study"
+        backHref="/#work"
+        backLabel="Back to work"
+      />
+      <main id="main-content" className="mx-auto max-w-6xl px-6 py-12 sm:px-8 sm:py-16">
+        <section className="rounded-2xl border border-white/[0.08] bg-[rgba(255,255,255,0.04)] p-6 sm:p-10">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#22D3EE]">
             RAG case study
           </p>
@@ -146,7 +143,7 @@ export default function RagAssistantCaseStudyPage() {
                 <button
                   type="button"
                   onClick={() => setActiveId(stage.id)}
-                  className={`rounded-lg border px-3 py-3 text-left transition-all duration-300 motion-reduce:transition-none ${
+                  className={`min-h-11 rounded-lg border px-3 py-3 text-left transition-all duration-300 motion-reduce:transition-none ${
                     activeId === stage.id
                       ? "border-[#8B5CF6]/50 bg-[#8B5CF6]/15 shadow-lg shadow-[#8B5CF6]/10"
                       : "border-white/[0.08] bg-black/20 hover:border-[#8B5CF6]/30 hover:bg-black/30"
@@ -271,7 +268,7 @@ export default function RagAssistantCaseStudyPage() {
             system inspector, not a production inference endpoint.
           </p>
         </section>
-      </div>
+      </main>
     </div>
   );
 }

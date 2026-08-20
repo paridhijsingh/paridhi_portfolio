@@ -129,7 +129,7 @@ export function CoverNav({ onNavigate }: CoverNavProps) {
               <a
                 href={href}
                 onClick={(event) => handleNavClick(event, href)}
-                className="block rounded-md px-3 py-2.5 text-sm font-medium text-[#A1A1AA] transition-colors hover:bg-white/[0.04] hover:text-[#F5F5F5]"
+                className="block min-h-11 rounded-md px-3 py-2.5 text-sm font-medium text-[#A1A1AA] transition-colors hover:bg-white/[0.04] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
               >
                 {label}
               </a>

@@ -67,7 +67,7 @@ export function PortfolioAssistant() {
 
   const containerClass = useMemo(
     () =>
-      `fixed bottom-5 right-5 z-[220] w-[min(92vw,380px)] transition-all duration-300 motion-reduce:transition-none ${
+      `fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-[220] w-[min(92vw,380px)] transition-all duration-300 motion-reduce:transition-none sm:right-5 ${
         open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-95"
       }`,
     [open],
@@ -176,7 +176,7 @@ export function PortfolioAssistant() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="group ml-auto mt-3 inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#08090D]/90 px-4 py-2 text-sm font-medium text-[#F5F5F5] shadow-lg shadow-black/30 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-[#8B5CF6]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] motion-reduce:hover:translate-y-0"
+        className="group ml-auto mt-3 inline-flex min-h-11 items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#08090D]/90 px-4 py-2.5 text-sm font-medium text-[#F5F5F5] shadow-lg shadow-black/30 backdrop-blur-sm transition-all hover:border-[#8B5CF6]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] motion-reduce:hover:translate-y-0"
       >
         <MessageSquare
           className="h-4 w-4 text-[#22D3EE] transition-colors group-hover:text-[#F5F5F5]"

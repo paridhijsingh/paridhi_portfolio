@@ -1,32 +1,50 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/navigation";
 import { SITE } from "@/lib/constants";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
+import { useActiveSection } from "@/hooks/useActiveSection";
+
+const SECTION_IDS = NAV_ITEMS.map(({ href }) => href.replace("#", ""));
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const activeId = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
     if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
 
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, [open]);
 
   const closeMenu = () => setOpen(false);
 
-  const linkClass =
-    "rounded-md px-3 py-2 text-sm font-medium text-[#A1A1AA] transition-colors hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]";
-
   const iconLinkClass =
-    "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]";
+    "inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]";
+
+  const navLinkClass = useMemo(
+    () => (href: string) => {
+      const id = href.replace("#", "");
+      const isActive = activeId === id;
+      return `nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] ${
+        isActive ? "nav-link-active" : ""
+      }`;
+    },
+    [activeId],
+  );
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#08090D]/90 backdrop-blur-sm">
@@ -47,7 +65,7 @@ export function Navbar() {
           <ul className="flex items-center gap-1">
             {NAV_ITEMS.map(({ href, label }) => (
               <li key={href}>
-                <a href={href} className={linkClass}>
+                <a href={href} className={navLinkClass(href)} aria-current={activeId === href.replace("#", "") ? "page" : undefined}>
                   {label}
                 </a>
               </li>
@@ -77,7 +95,7 @@ export function Navbar() {
               href={SITE.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.08] px-3.5 py-2 text-sm font-medium text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.08] px-3.5 py-2 text-sm font-medium text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
             >
               <Download className="h-3.5 w-3.5" aria-hidden="true" />
               Resume
@@ -103,7 +121,7 @@ export function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-white/[0.08] bg-[#08090D]/98 transition-[max-height,opacity] duration-300 ease-in-out motion-reduce:transition-none lg:hidden ${
+        className={`overflow-hidden border-t border-white/[0.08] bg-[#08090D]/98 transition-[max-height,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none lg:hidden ${
           open ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -113,7 +131,12 @@ export function Navbar() {
               <a
                 href={href}
                 onClick={closeMenu}
-                className="block rounded-md px-3 py-2.5 text-sm font-medium text-[#A1A1AA] transition-colors hover:bg-white/[0.04] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+                className={`block min-h-11 rounded-md px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] ${
+                  activeId === href.replace("#", "")
+                    ? "bg-[#8B5CF6]/12 text-[#F5F5F5]"
+                    : "text-[#A1A1AA] hover:bg-white/[0.04] hover:text-[#F5F5F5]"
+                }`}
+                aria-current={activeId === href.replace("#", "") ? "page" : undefined}
               >
                 {label}
               </a>
@@ -144,7 +167,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-white/[0.08] px-3.5 py-2 text-sm font-medium text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5]"
+            className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-white/[0.08] px-3.5 py-2 text-sm font-medium text-[#A1A1AA] transition-all hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
           >
             <Download className="h-3.5 w-3.5" aria-hidden="true" />
             Resume
