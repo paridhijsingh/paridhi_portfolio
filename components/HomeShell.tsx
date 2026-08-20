@@ -22,14 +22,14 @@ export function HomeShell() {
       {!entered ? <IntroCover onComplete={handleIntroComplete} /> : null}
 
       <div
-        className={`relative flex min-h-full flex-col animate-gradient bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 bg-[length:200%_200%] transition-opacity duration-500 ${
+        className={`lab-grid relative flex min-h-full flex-col bg-[#08090D] transition-opacity duration-500 ${
           entered ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden={!entered}
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(56,189,248,0.12),_transparent_60%)]"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_0%,rgba(139,92,246,0.08),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(34,211,238,0.05),transparent_45%)]"
         />
 
         {entered ? (

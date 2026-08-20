@@ -1,26 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-heading",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
 const siteDescription =
-  "AI & Data Science portfolio focused on Machine Learning system design, RAG architectures, and multi-agent orchestration.";
+  "AI Engineer & Data Scientist portfolio focused on ML system design, RAG architectures, and multi-agent orchestration.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://workwithparidhi.vercel.app"),
-  title: "Paridhi Jay Singh | AI & Data Science",
+  title: "Paridhi Jay Singh | AI Engineer & Data Scientist",
   description: siteDescription,
   openGraph: {
-    title: "Paridhi Jay Singh | AI & Data Science",
+    title: "Paridhi Jay Singh | AI Engineer & Data Scientist",
     description: siteDescription,
     url: "/",
     siteName: "Paridhi Jay Singh",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paridhi Jay Singh | AI & Data Science",
+    title: "Paridhi Jay Singh | AI Engineer & Data Scientist",
     description: siteDescription,
     images: ["/profile.jpg"],
   },
@@ -51,9 +56,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-slate-50 font-sans text-slate-700">
+      <body className="min-h-full bg-[#08090D] font-sans text-[#F5F5F5]">
         {children}
       </body>
     </html>

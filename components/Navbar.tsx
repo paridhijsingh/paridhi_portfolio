@@ -43,7 +43,7 @@ export function Navbar() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#08090D]/90 backdrop-blur-sm">
       <nav
         aria-label="Primary"
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8"
@@ -51,9 +51,10 @@ export function Navbar() {
         <a
           href="#home"
           onClick={closeMenu}
-          className="text-base font-semibold tracking-tight text-slate-900 transition-colors hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+          className="font-[family-name:var(--font-heading)] text-base font-semibold tracking-tight text-[#F5F5F5] transition-colors hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
         >
-          {SITE.name}
+          {SITE.shortName}
+          <span className="text-[#8B5CF6]">.</span>
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -62,7 +63,7 @@ export function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-sky-50 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+                  className="inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium text-[#A1A1AA] transition-colors hover:bg-white/[0.04] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                   {label}
@@ -75,10 +76,10 @@ export function Navbar() {
             href={SITE.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/30 bg-[#8B5CF6]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition-colors hover:border-[#8B5CF6]/50 hover:bg-[#8B5CF6]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
           >
             <Download className="h-4 w-4" aria-hidden="true" />
-            Download Resume
+            Resume
           </a>
         </div>
 
@@ -88,7 +89,7 @@ export function Navbar() {
           aria-label={open ? "Close mobile menu" : "Open mobile menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-colors hover:border-sky-300 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] text-[#A1A1AA] transition-colors hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D] md:hidden"
         >
           {open ? (
             <X className="h-5 w-5" aria-hidden="true" />
@@ -100,7 +101,7 @@ export function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-slate-200/70 bg-white/95 transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+        className={`overflow-hidden border-t border-white/[0.08] bg-[#08090D]/98 transition-[max-height,opacity] duration-300 ease-in-out motion-reduce:transition-none md:hidden ${
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -110,9 +111,9 @@ export function Navbar() {
               <a
                 href={href}
                 onClick={closeMenu}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-[#A1A1AA] transition-colors hover:bg-white/[0.04] hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
               >
-                <Icon className="h-4 w-4 text-sky-600" aria-hidden="true" />
+                <Icon className="h-4 w-4 text-[#8B5CF6]" aria-hidden="true" />
                 {label}
               </a>
             </li>
@@ -123,7 +124,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#8B5CF6]/30 bg-[#8B5CF6]/10 px-4 py-2.5 text-sm font-medium text-[#F5F5F5] transition-colors hover:bg-[#8B5CF6]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090D]"
             >
               <Download className="h-4 w-4" aria-hidden="true" />
               Download Resume

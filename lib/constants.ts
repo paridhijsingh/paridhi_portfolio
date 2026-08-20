@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Paridhi Jay Singh",
   shortName: "Paridhi",
-  role: "AI & Data Science Engineer",
+  role: "AI Engineer | Data Scientist",
   education: "Statistics & Data Science, University of California, Santa Barbara",
   email: "paridhijaysingh@gmail.com",
   github: "https://github.com/paridhijsingh",
