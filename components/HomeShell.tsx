@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { IntroCover } from "@/components/IntroCover";
 import { Navbar } from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
+import { TechnicalStack } from "@/components/TechnicalStack";
 import { Writing } from "@/components/Writing";
 
 export function HomeShell() {
@@ -61,6 +62,7 @@ export function HomeShell() {
             <main className="flex-1">
               <Projects />
               <About />
+              <TechnicalStack />
               <Experience />
               <Writing />
               <Contact />

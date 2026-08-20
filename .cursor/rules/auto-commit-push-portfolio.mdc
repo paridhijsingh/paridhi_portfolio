@@ -1,0 +1,18 @@
+---
+description: Auto commit and push portfolio changes
+alwaysApply: true
+---
+
+# Auto Commit + Push Workflow
+
+When working in this repository (`paridhi_portfolio`), after completing any code change:
+
+1. Run verification first:
+   - `npm run lint`
+   - `npm run build`
+2. If verification passes, stage relevant files and create a commit immediately.
+3. Push the commit to `origin/main` in the same workflow.
+4. Use clear, specific commit messages that describe the user-requested change.
+5. Report commit hash and push result back to the user.
+
+If lint/build fails, fix issues before committing and pushing.
