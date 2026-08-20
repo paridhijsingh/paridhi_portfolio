@@ -1,16 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Camera, ChefHat, Cloud, Droplets, History, LineChart, Smartphone } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ArrowRight, Camera, ChefHat, Cloud, Droplets, History, LineChart } from "lucide-react";
+import { CalorieWizardPhonePreview } from "@/components/caloriewizard/CalorieWizardPhonePreview";
 import { SubpageNav } from "@/components/SubpageNav";
-
-type AppScreen = {
-  id: string;
-  title: string;
-  subtitle: string;
-  metric: string;
-};
 
 type Feature = {
   id: string;
@@ -24,39 +18,6 @@ type Node = {
   label: string;
   explanation: string;
 };
-
-const SCREENS: readonly AppScreen[] = [
-  {
-    id: "landing",
-    title: "Landing screen",
-    subtitle: "Quick start for meal scan, tracking, and recipe workflow.",
-    metric: "Today: Ready to log",
-  },
-  {
-    id: "dashboard",
-    title: "Dashboard",
-    subtitle: "Calories, macros, and hydration summaries across time periods.",
-    metric: "Daily overview",
-  },
-  {
-    id: "scanner",
-    title: "Meal Scanner",
-    subtitle: "Capture or select meal photos for AI nutrition analysis.",
-    metric: "Gemini-assisted meal insight",
-  },
-  {
-    id: "recipe",
-    title: "Recipe Wizard",
-    subtitle: "Generate structured recipes from available ingredients.",
-    metric: "Personalized recipe output",
-  },
-  {
-    id: "water",
-    title: "Water Tracker",
-    subtitle: "Track hydration entries and reminder behavior.",
-    metric: "Hydration log",
-  },
-];
 
 const FEATURES: readonly Feature[] = [
   {
@@ -151,28 +112,7 @@ const TEST_ITEMS = [
 ] as const;
 
 export default function CalorieWizardCaseStudyPage() {
-  const [activeScreenId, setActiveScreenId] = useState(SCREENS[0].id);
   const [activeNodeId, setActiveNodeId] = useState(ARCHITECTURE[0].id);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) return;
-
-    const timer = window.setInterval(() => {
-      setActiveScreenId((current) => {
-        const index = SCREENS.findIndex((screen) => screen.id === current);
-        const nextIndex = (index + 1) % SCREENS.length;
-        return SCREENS[nextIndex].id;
-      });
-    }, 2800);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const activeScreen = useMemo(
-    () => SCREENS.find((screen) => screen.id === activeScreenId) ?? SCREENS[0],
-    [activeScreenId],
-  );
 
   const activeNode = useMemo(
     () => ARCHITECTURE.find((node) => node.id === activeNodeId) ?? ARCHITECTURE[0],
@@ -203,65 +143,7 @@ export default function CalorieWizardCaseStudyPage() {
           </p>
         </section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-          <div className="rounded-2xl border border-white/[0.08] bg-[rgba(255,255,255,0.03)] p-6">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#22D3EE]">
-              App preview
-            </p>
-            <div className="mt-5 mx-auto w-[min(290px,100%)] rounded-[2rem] border border-white/[0.12] bg-black/40 p-3 shadow-xl shadow-black/40">
-              <div className="rounded-[1.6rem] border border-white/[0.08] bg-[#0f1118] p-4">
-                <div className="mx-auto h-1.5 w-14 rounded-full bg-white/[0.16]" />
-                <p className="mt-4 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#22D3EE]">
-                  {activeScreen.title}
-                </p>
-                <p className="mt-2 font-[family-name:var(--font-heading)] text-lg text-[#F5F5F5]">
-                  {activeScreen.metric}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">
-                  {activeScreen.subtitle}
-                </p>
-                <div className="mt-5 h-32 rounded-xl border border-white/[0.08] bg-black/25 p-3">
-                  <div className="mb-2 flex items-center gap-2 text-[#8B5CF6]">
-                    <Smartphone className="h-4 w-4" aria-hidden="true" />
-                    <span className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-[#A1A1AA]">
-                      Screen state
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2 rounded-full bg-white/[0.08]" />
-                    <div className="h-2 w-4/5 rounded-full bg-white/[0.07]" />
-                    <div className="h-2 w-3/5 rounded-full bg-[#22D3EE]/20" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-white/[0.08] bg-[rgba(255,255,255,0.03)] p-6">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#22D3EE]">
-              Screens
-            </p>
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              {SCREENS.map((screen, index) => (
-                <button
-                  key={screen.id}
-                  type="button"
-                  onClick={() => setActiveScreenId(screen.id)}
-                  className={`min-h-11 rounded-lg border px-3 py-2 text-left transition-all ${
-                    screen.id === activeScreenId
-                      ? "border-[#8B5CF6]/50 bg-[#8B5CF6]/15 text-[#F5F5F5]"
-                      : "border-white/[0.08] bg-black/20 text-[#A1A1AA] hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5]"
-                  }`}
-                >
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-[#22D3EE]">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-1 text-sm font-medium">{screen.title}</p>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CalorieWizardPhonePreview className="mt-10" />
 
         <section className="mt-10 rounded-2xl border border-white/[0.08] bg-[rgba(255,255,255,0.03)] p-6 sm:p-8">
           <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold text-[#F5F5F5]">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectCaseStudyModal } from "@/components/ProjectCaseStudyModal";
+import { CalorieWizardProjectShowcase } from "@/components/caloriewizard/CalorieWizardProjectShowcase";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
@@ -50,6 +51,10 @@ export function Projects() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={120}>
+            <CalorieWizardProjectShowcase />
+          </Reveal>
         </div>
       </section>
 

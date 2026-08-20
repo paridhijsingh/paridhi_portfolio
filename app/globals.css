@@ -255,6 +255,36 @@ body {
   animation: processFlow 2.8s ease-in-out infinite;
 }
 
+@keyframes cwScreenEnter {
+  from {
+    opacity: 0;
+    transform: translateX(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes cwScreenExit {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-8px) scale(0.98);
+  }
+}
+
+.cw-screen-enter {
+  animation: cwScreenEnter 500ms var(--ease-out) forwards;
+}
+
+.cw-screen-exit {
+  animation: cwScreenExit 500ms var(--ease-out) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-turn-surface,
   .page-turn-surface.page-turning {
@@ -270,7 +300,9 @@ body {
   .animate-\[flowPulse_2\.4s_ease-in-out_infinite\],
   .animate-\[flowPulse_2s_ease-in-out_infinite\],
   .animate-\[flowPulse_3\.2s_ease-in-out_infinite\],
-  .animate-\[flowPulse_3\.4s_ease-in-out_infinite\] {
+  .animate-\[flowPulse_3\.4s_ease-in-out_infinite\],
+  .cw-screen-enter,
+  .cw-screen-exit {
     animation: none !important;
   }
 
