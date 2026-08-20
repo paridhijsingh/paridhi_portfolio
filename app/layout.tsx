@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { PortfolioAssistant } from "@/components/PortfolioAssistant";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -60,6 +61,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-[#08090D] font-sans text-[#F5F5F5]">
         {children}
+        <PortfolioAssistant />
       </body>
     </html>
   );
