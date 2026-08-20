@@ -5,12 +5,12 @@ import { Reveal } from "@/components/Reveal";
 
 export function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 px-6 py-24 sm:px-8">
+    <section id="work" className="scroll-mt-24 px-6 py-24 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="Selected work"
-            title="Projects"
+            eyebrow="Work"
+            title="Selected projects"
             description="Pinned work from my GitHub—agentic systems, MLOps pipelines, and applied data science."
           />
         </Reveal>
