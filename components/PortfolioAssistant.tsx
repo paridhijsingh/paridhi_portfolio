@@ -33,7 +33,7 @@ function mockAssistantResponse(input: string): string {
   }
 
   if (question.includes("strongest project")) {
-    return "A strong representative project is the Agentic Insurance Claims Framework, which explores orchestration across LangGraph, OpenAI SDK, Anthropic SDK, and Google ADK. It demonstrates system-level design rather than a single-model prototype.";
+    return "A strong representative project is the Insurance Claims AI Workflow: a fully local LangGraph system where deterministic code controls routing, retries, and safety, while an optional Ollama model provides only bounded final judgment. It includes 78 passing tests and documented local evaluation results—not a production claims platform.";
   }
 
   if (question.includes("technologies") || question.includes("tech stack")) {

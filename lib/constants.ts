@@ -26,6 +26,14 @@ export const ABOUT_HIGHLIGHTS = [
 
 export const PROJECTS = [
   {
+    title: "Insurance Claims AI Workflow",
+    description:
+      "Fully local insurance-claims workflow that separates deterministic control logic from LLM-based judgment, with LangGraph orchestration, structured decisions, and automated evaluation.",
+    highlight: "Agentic systems",
+    tech: ["Python", "LangGraph", "Pydantic", "Ollama", "pytest"],
+    href: "https://github.com/paridhijsingh/agentic-insurance-claims-framework/tree/main/insurance-claims-v2",
+  },
+  {
     title: "Agentic Insurance Claims Framework",
     description:
       "Multi-framework agentic AI system for insurance claims automation, exploring LLM orchestration patterns across OpenAI SDK, LangGraph, Anthropic SDK, and Google ADK.",

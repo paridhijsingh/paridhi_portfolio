@@ -94,14 +94,83 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
       "Currently in testing. The app is in active development and validation, not presented as a finished production system.",
   },
   {
-    id: "agentic-insurance-claims",
+    id: "insurance-claims-ai-workflow",
     title: PROJECTS[0].title,
     tagline:
-      "Multi-framework agentic AI for insurance claims automation.",
+      "Local LangGraph workflow: deterministic control, bounded LLM judgment.",
     description: PROJECTS[0].description,
     highlight: PROJECTS[0].highlight,
-    tech: [...PROJECTS[0].tech, "Google ADK"],
+    tech: PROJECTS[0].tech,
     github: PROJECTS[0].href,
+    isAI: true,
+    architecture: [
+      {
+        id: "validation",
+        label: "Validation",
+        explanation:
+          "Pydantic validates claim intake before the graph runs.",
+      },
+      {
+        id: "policy",
+        label: "Policy",
+        explanation:
+          "Deterministic policy lookup verifies coverage eligibility in code.",
+      },
+      {
+        id: "ocr",
+        label: "OCR",
+        explanation:
+          "Document OCR extraction runs as a deterministic tool step.",
+      },
+      {
+        id: "retry",
+        label: "Retry Router",
+        explanation:
+          "Code-level OCR retry routing loops failures or forces escalation after max attempts.",
+      },
+      {
+        id: "fraud",
+        label: "Fraud",
+        explanation:
+          "Deterministic fraud scoring produces signals before any LLM call.",
+      },
+      {
+        id: "safety",
+        label: "Safety",
+        explanation:
+          "Safety rails in Python block unsafe approve paths and skip the LLM when required steps fail.",
+      },
+      {
+        id: "ollama",
+        label: "Ollama",
+        explanation:
+          "Optional local Ollama model provides bounded final judgment only on verified facts.",
+      },
+      {
+        id: "decision",
+        label: "Decision",
+        explanation:
+          "Structured APPROVE / REJECT / ESCALATE output with post-LLM guards in code.",
+      },
+    ],
+    problem:
+      "Chat-only claim agents often mix tool choice, retries, and final decisions in free text—hard to test and easy to silently approve unsafe paths.",
+    approach:
+      "Separate deterministic control logic (validation, policy, OCR, fraud, retries, safety) from a bounded LLM judgment step. LangGraph orchestrates the graph; Ollama is optional and local-only.",
+    implementation:
+      "Python package with Pydantic models, injectable policy/OCR/fraud tools, LangGraph nodes and OCR retry router, FakeLLM for tests, optional Ollama for structured DecisionOutput, CLI execution, logging, and pytest plus evaluation harnesses. Not a production insurance claims system.",
+    results:
+      "78 automated tests passing. 20 LLM-judgment evaluation cases. On the expanded L07–L20 suite with llama3.2, reported accuracy improved from 29% (prompt v1) to 79% (prompt v2); 0 safety violations across reported Ollama evaluations. These are local evaluation results on a small suite—not production accuracy. Fully local; no cloud API keys required.",
+  },
+  {
+    id: "agentic-insurance-claims",
+    title: PROJECTS[1].title,
+    tagline:
+      "Multi-framework agentic AI for insurance claims automation.",
+    description: PROJECTS[1].description,
+    highlight: PROJECTS[1].highlight,
+    tech: [...PROJECTS[1].tech, "Google ADK"],
+    github: PROJECTS[1].href,
     isAI: true,
     architecture: [
       {
@@ -146,13 +215,13 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
   },
   {
     id: "medical-insurance-mlops",
-    title: PROJECTS[1].title,
+    title: PROJECTS[2].title,
     tagline:
       "End-to-end MLOps from regression training to AWS EKS deployment.",
-    description: PROJECTS[1].description,
-    highlight: PROJECTS[1].highlight,
-    tech: PROJECTS[1].tech,
-    github: PROJECTS[1].href,
+    description: PROJECTS[2].description,
+    highlight: PROJECTS[2].highlight,
+    tech: PROJECTS[2].tech,
+    github: PROJECTS[2].href,
     isAI: true,
     architecture: [
       {
@@ -191,13 +260,13 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
   },
   {
     id: "weather-analytics-engine",
-    title: PROJECTS[2].title,
+    title: PROJECTS[3].title,
     tagline:
       "Real-time weather data, SQL persistence, and LLM-powered recommendations.",
-    description: PROJECTS[2].description,
-    highlight: PROJECTS[2].highlight,
-    tech: PROJECTS[2].tech,
-    github: PROJECTS[2].href,
+    description: PROJECTS[3].description,
+    highlight: PROJECTS[3].highlight,
+    tech: PROJECTS[3].tech,
+    github: PROJECTS[3].href,
     caseStudyHref: "/case-studies/rag-ai-assistant",
     isAI: true,
     architecture: [
@@ -243,13 +312,13 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
   },
   {
     id: "cybersecurity-threat-analysis",
-    title: PROJECTS[3].title,
+    title: PROJECTS[4].title,
     tagline:
       "Analysis of global cybersecurity threats from 2015–2024.",
-    description: PROJECTS[3].description,
-    highlight: PROJECTS[3].highlight,
-    tech: PROJECTS[3].tech,
-    github: PROJECTS[3].href,
+    description: PROJECTS[4].description,
+    highlight: PROJECTS[4].highlight,
+    tech: PROJECTS[4].tech,
+    github: PROJECTS[4].href,
     isAI: false,
     architecture: [
       {
