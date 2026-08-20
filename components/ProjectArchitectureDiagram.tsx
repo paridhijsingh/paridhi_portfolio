@@ -124,21 +124,25 @@ function DataDiagram() {
 
 type ProjectArchitectureDiagramProps = {
   highlight: string;
+  compact?: boolean;
 };
 
 export function ProjectArchitectureDiagram({
   highlight,
+  compact = false,
 }: ProjectArchitectureDiagramProps) {
   const type = DIAGRAM_MAP[highlight] ?? "data";
 
   return (
     <div
       aria-hidden="true"
-      className="mb-5 overflow-hidden rounded-lg border border-white/[0.06] bg-black/20 p-2"
+      className={`overflow-hidden rounded-lg border border-white/[0.06] bg-black/20 ${
+        compact ? "p-1.5" : "mb-5 p-2"
+      }`}
     >
       <svg
         viewBox="0 0 240 80"
-        className="h-16 w-full"
+        className={`w-full ${compact ? "h-14" : "h-16"}`}
         role="img"
         aria-label={`Architecture diagram for ${highlight}`}
       >

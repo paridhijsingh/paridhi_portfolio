@@ -156,8 +156,31 @@ body {
   }
 }
 
+@keyframes processFlow {
+  0% {
+    stroke-dashoffset: 24;
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+}
+
+.process-line-active {
+  animation: processFlow 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .typewriter-cursor {
     animation: none;
+  }
+
+  .process-line-active {
+    animation: none;
+    opacity: 0.6;
   }
 }
