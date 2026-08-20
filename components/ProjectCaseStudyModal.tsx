@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { ExternalLink, X } from "lucide-react";
 import { InteractiveArchitectureDiagram } from "@/components/InteractiveArchitectureDiagram";
@@ -126,6 +127,15 @@ export function ProjectCaseStudyModal({
 
               {key === "links" ? (
                 <div className="mt-4 flex flex-wrap gap-3">
+                  {project.caseStudyHref ? (
+                    <Link
+                      href={project.caseStudyHref}
+                      className="inline-flex items-center gap-2 rounded-lg border border-[#22D3EE]/30 bg-[#22D3EE]/10 px-4 py-2.5 text-sm font-medium text-[#F5F5F5] transition-all hover:border-[#22D3EE]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE]"
+                    >
+                      Dedicated case study
+                      <ExternalLink className="h-3.5 w-3.5 text-[#A1A1AA]" />
+                    </Link>
+                  ) : null}
                   <a
                     href={project.github}
                     target="_blank"

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { ProjectArchitectureDiagram } from "@/components/ProjectArchitectureDiagram";
 import { GitHubIcon } from "@/components/SocialIcons";
@@ -11,7 +12,8 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
-  const { title, tagline, highlight, tech, github, demo } = project;
+  const { title, tagline, highlight, tech, github, demo, caseStudyHref } =
+    project;
 
   return (
     <article className="group relative h-full">
@@ -54,6 +56,16 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       </button>
 
       <div className="mt-3 flex items-center gap-3 px-1">
+        {caseStudyHref ? (
+          <Link
+            href={caseStudyHref}
+            aria-label={`${title} dedicated case study`}
+            className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A1A1AA] transition-colors hover:text-[#22D3EE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE]"
+          >
+            Case Study
+            <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+          </Link>
+        ) : null}
         <a
           href={github}
           target="_blank"

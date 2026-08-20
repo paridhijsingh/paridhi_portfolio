@@ -15,6 +15,7 @@ export type ProjectCaseStudy = {
   tech: readonly string[];
   github: string;
   demo?: string;
+  caseStudyHref?: string;
   isAI: boolean;
   architecture: readonly ArchitectureNode[];
   problem: string;
@@ -129,6 +130,7 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
     highlight: PROJECTS[2].highlight,
     tech: PROJECTS[2].tech,
     github: PROJECTS[2].href,
+    caseStudyHref: "/case-studies/rag-ai-assistant",
     isAI: true,
     architecture: [
       {
