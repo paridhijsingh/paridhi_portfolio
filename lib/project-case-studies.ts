@@ -51,6 +51,7 @@ export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
       "PhotosUI",
     ],
     github: "https://github.com/paridhijsingh/CalorieWizard",
+    caseStudyHref: "/case-studies/caloriewizard",
     isAI: true,
     architecture: [
       {
