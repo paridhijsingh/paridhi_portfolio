@@ -9,9 +9,13 @@ export type ArchitectureNode = {
 export type ProjectCaseStudy = {
   id: string;
   title: string;
+  cardTitle?: string;
+  cardCategory?: string;
   tagline: string;
+  cardSubline?: string;
   description: string;
   highlight: string;
+  status?: string;
   tech: readonly string[];
   github: string;
   demo?: string;
@@ -25,6 +29,69 @@ export type ProjectCaseStudy = {
 };
 
 export const PROJECT_CASE_STUDIES: readonly ProjectCaseStudy[] = [
+  {
+    id: "caloriewizard",
+    title: "CalorieWizard",
+    cardTitle: "CALORIEWIZARD",
+    cardCategory: "AI · iOS · SWIFTUI",
+    tagline: "Snap, Track, and Transform.",
+    cardSubline:
+      "An iOS nutrition companion that combines computer vision, nutrition tracking, recipe generation, hydration tracking, and cloud sync.",
+    description:
+      "An AI-powered iOS nutrition app that turns meal photos into calorie and macro insights and uses Gemini to generate personalized recipes.",
+    highlight: "AI · iOS · SwiftUI",
+    status: "Currently in testing",
+    tech: [
+      "SwiftUI",
+      "SwiftData",
+      "Google Gemini",
+      "Supabase",
+      "PostgreSQL",
+      "Swift Charts",
+      "PhotosUI",
+    ],
+    github: "https://github.com/paridhijsingh/CalorieWizard",
+    isAI: true,
+    architecture: [
+      {
+        id: "capture",
+        label: "Meal Photo",
+        explanation: "PhotosUI captures meal images for analysis.",
+      },
+      {
+        id: "analysis",
+        label: "Nutrition Analysis",
+        explanation:
+          "Image and nutrition logic estimate calories and macro breakdowns.",
+      },
+      {
+        id: "gemini",
+        label: "Gemini Recipes",
+        explanation:
+          "Google Gemini generates personalized recipe suggestions from nutrition context.",
+      },
+      {
+        id: "tracking",
+        label: "Tracking",
+        explanation:
+          "Daily nutrition and hydration logs are managed in the app layer.",
+      },
+      {
+        id: "cloud",
+        label: "Cloud Sync",
+        explanation:
+          "Supabase/PostgreSQL provide synchronized data and persistence.",
+      },
+    ],
+    problem:
+      "Nutrition tracking apps often make logging and interpretation manual. CalorieWizard aims to simplify this using meal-photo workflows and AI-assisted guidance.",
+    approach:
+      "Use SwiftUI for iOS experience, integrate meal-photo nutrition analysis, and add Gemini-powered recipe generation with persistent cloud data.",
+    implementation:
+      "Built as an iOS app using SwiftUI and SwiftData, with Supabase/PostgreSQL sync, Swift Charts visualization, and PhotosUI capture flows.",
+    results:
+      "Currently in testing. The app is in active development and validation, not presented as a finished production system.",
+  },
   {
     id: "agentic-insurance-claims",
     title: PROJECTS[0].title,

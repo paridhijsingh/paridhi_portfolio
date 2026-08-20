@@ -68,6 +68,14 @@ export function ProjectCaseStudyModal({
           {project.title}
         </h2>
         <p className="mt-3 text-base text-[#A1A1AA]">{project.tagline}</p>
+        {project.status ? (
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#22D3EE]/25 bg-[#22D3EE]/10 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-[#F5F5F5]">
+            <span aria-hidden="true" className="text-[#22D3EE]">
+              ●
+            </span>
+            {project.status}
+          </p>
+        ) : null}
 
         <div className="mt-10 space-y-10">
           {SECTIONS.map(({ key, label }, index) => (

@@ -12,8 +12,19 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
-  const { title, tagline, highlight, tech, github, demo, caseStudyHref } =
-    project;
+  const {
+    title,
+    cardTitle,
+    cardCategory,
+    tagline,
+    cardSubline,
+    highlight,
+    status,
+    tech,
+    github,
+    demo,
+    caseStudyHref,
+  } = project;
 
   return (
     <article className="group relative h-full">
@@ -32,11 +43,29 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
         </div>
 
         <h3 className="mt-4 font-[family-name:var(--font-heading)] text-xl font-semibold tracking-tight text-[#F5F5F5] transition-colors group-hover:text-[#8B5CF6] sm:text-2xl">
-          {title}
+          {cardTitle ?? title}
         </h3>
+        {cardCategory ? (
+          <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[#22D3EE]">
+            {cardCategory}
+          </p>
+        ) : null}
         <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA] sm:text-base">
           {tagline}
         </p>
+        {cardSubline ? (
+          <p className="mt-3 text-sm leading-relaxed text-[#A1A1AA]">
+            {cardSubline}
+          </p>
+        ) : null}
+        {status ? (
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#22D3EE]/25 bg-[#22D3EE]/10 px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-[#F5F5F5]">
+            <span aria-hidden="true" className="text-[#22D3EE]">
+              ●
+            </span>
+            {status}
+          </p>
+        ) : null}
 
         <div className="pointer-events-none mt-6 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100 motion-reduce:max-h-24 motion-reduce:opacity-100">
           <ProjectArchitectureDiagram highlight={highlight} compact />
@@ -56,6 +85,25 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       </button>
 
       <div className="mt-3 flex items-center gap-3 px-1">
+        <button
+          type="button"
+          onClick={onOpen}
+          className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/10 px-3.5 py-2 text-xs font-medium text-[#F5F5F5] transition-colors hover:border-[#8B5CF6]/55 hover:bg-[#8B5CF6]/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+        >
+          Explore project
+          <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+        </button>
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${title} on GitHub`}
+          className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/[0.08] px-3.5 py-2 text-xs font-medium text-[#A1A1AA] transition-colors hover:border-[#8B5CF6]/30 hover:text-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+        >
+          <GitHubIcon className="h-3.5 w-3.5" />
+          View GitHub
+          <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+        </a>
         {caseStudyHref ? (
           <Link
             href={caseStudyHref}
@@ -66,17 +114,6 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
           </Link>
         ) : null}
-        <a
-          href={github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${title} on GitHub`}
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#A1A1AA] transition-colors hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
-        >
-          <GitHubIcon className="h-3.5 w-3.5" />
-          GitHub
-          <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-        </a>
         {demo ? (
           <a
             href={demo}

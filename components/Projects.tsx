@@ -38,7 +38,11 @@ export function Projects() {
 
           <div className="grid gap-8 lg:grid-cols-2">
             {PROJECT_CASE_STUDIES.map((project, index) => (
-              <Reveal key={project.id} delay={index * 100}>
+              <Reveal
+                key={project.id}
+                delay={index * 100}
+                className={project.id === "caloriewizard" ? "lg:col-span-2" : ""}
+              >
                 <ProjectCard
                   project={project}
                   onOpen={() => setActiveProject(project)}
